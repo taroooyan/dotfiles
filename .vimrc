@@ -37,6 +37,7 @@ if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
 	NeoBundle "tyru/open-browser.vim"
 	NeoBundle "Shougo/unite.vim"
 	NeoBundle "Shougo/vimfiler"
+	NeoBundle "koron/codic-vim"
 
 	call neobundle#end()
 
@@ -83,6 +84,9 @@ set foldmethod=marker foldmarker={,}
 " auto comment out disable
 autocmd FileType * setlocal formatoptions-=ro
 set clipboard+=unnamed
+"for ubuntu 15.04
+set clipboard=unnamedplus
+
 set backspace=indent,eol,start
 "long text is shown one line
 "set nowrap
