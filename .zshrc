@@ -207,6 +207,11 @@ mkdto(){
 	mkdir `date '+%Y%m%d'`
 }
 
+###alias
+#pbcopy for linux
+alias pbcopy='xsel --clipboard --input'
+
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/Cellar/gnupg/1.4.19/bin/$PATH"
