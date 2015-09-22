@@ -22,6 +22,15 @@ if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
 	" My Bundles here:
 	" Refer to |:NeoBundle-examples|.
 	" Note: You don't set neobundle setting in .gvimrc!
+	" update vimproc 
+	NeoBundle 'Shougo/vimproc', {
+		\ 'build' : {
+			\ 'windows' : 'make -f make_mingw32.mak',
+			\ 'cygwin' : 'make -f make_cygwin.mak',
+			\ 'mac' : 'make -f make_mac.mak',
+			\ 'unix' : 'make -f make_unix.mak',
+		\ },
+	\ }
 	" molokai
 	NeoBundle 'tomasr/molokai'
 	" rails 
@@ -132,3 +141,8 @@ cnoremap <C-a> <Home>
 noremap <S-l>   $
 noremap <S-h>   ^
 
+" CTRL-hjklでウィンドウ移動
+nnoremap <C-j> :<C-w>j
+nnoremap <C-k> :<C-k>j
+nnoremap <C-l> :<C-l>j
+nnoremap <C-h> :<C-h>j
