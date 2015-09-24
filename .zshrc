@@ -221,8 +221,9 @@ bindkey '^Z' fancy-ctrl-z
 
 ###alias
 #pbcopy for linux
-alias pbcopy='xsel --clipboard --input'
-
+if [ $(uname) = "Linux" ] ; then
+	alias pbcopy='xsel --clipboard --input'
+fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
