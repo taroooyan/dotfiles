@@ -225,6 +225,10 @@ if [ $(uname) = "Linux" ] ; then
 	alias pbcopy='xsel --clipboard --input'
 fi
 
+###add hook
+eval "$(direnv hook zsh)"
+
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/Cellar/gnupg/1.4.19/bin/$PATH"
