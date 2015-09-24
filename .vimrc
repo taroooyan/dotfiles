@@ -48,6 +48,21 @@ if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
 	NeoBundle "Shougo/vimfiler"
 	NeoBundle "koron/codic-vim"
 
+	"整形"
+	NeoBundle 'vim-scripts/Align'
+
+	" メソッド定義元へのジャンプ
+	NeoBundle 'szw/vim-tags'
+
+	NeoBundleLazy "majutsushi/tagbar", {
+	      \ "autoload": { "commands": ["TagbarToggle"] }}
+	if ! empty(neobundle#get("tagbar"))
+	   " Width (default 40)
+	  let g:tagbar_width = 20
+	  " Map for toggle
+	  nn <silent> <leader>t :TagbarToggle<CR>
+	endif
+
 	call neobundle#end()
 
 	" Required:
@@ -146,3 +161,14 @@ nnoremap <C-j> :<C-w>j
 nnoremap <C-k> :<C-k>j
 nnoremap <C-l> :<C-l>j
 nnoremap <C-h> :<C-h>j
+
+
+set showmatch           " 対応する括弧などをハイライト表示する
+set matchtime=3         " 対応括弧のハイライト表示を3秒にする
+" 入力モード中に素早くjjと入力した場合はESCとみなす
+inoremap jj <Esc>
+" ESCを二回押すことでハイライトを消す
+nmap <silent> <Esc><Esc> :nohlsearch<CR>
+
+
+

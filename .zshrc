@@ -206,6 +206,18 @@ texpdf(){
 mkdto(){
 	mkdir `date '+%Y%m%d'`
 }
+#fgコマンドを<C-z>で行う
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
 
 ###alias
 #pbcopy for linux
@@ -217,3 +229,4 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/Cellar/gnupg/1.4.19/bin/$PATH"
 export PATH="/usr/local/Cellar/curl/7.44.0/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/Cellar/ctags/5.8_1/bin:$PATH"
