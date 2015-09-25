@@ -1,106 +1,106 @@
 if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
-	" Note: Skip initialization for vim-tiny or vim-small.
-	if !1 	| finish | endif
+  " Note: Skip initialization for vim-tiny or vim-small.
+  if !1   | finish | endif
 
-	if has('vim_starting')
-		if &compatible
-			" Be iMproved
-			set nocompatible
-		endif
-		" Required:
-		set runtimepath+=~/.vim/bundle/neobundle.vim/
-	endif
+  if has('vim_starting')
+    if &compatible
+      " Be iMproved
+      set nocompatible
+    endif
+    " Required:
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+  endif
 
-	" Required:
-	call neobundle#begin(expand('~/.vim/bundle/'))
+  " Required:
+  call neobundle#begin(expand('~/.vim/bundle/'))
 
 
-	" Let NeoBundle manage NeoBundle
-	" Required:
-	NeoBundleFetch 'Shougo/neobundle.vim'
+  " Let NeoBundle manage NeoBundle
+  " Required:
+  NeoBundleFetch 'Shougo/neobundle.vim'
 
-	" My Bundles here:
-	" Refer to |:NeoBundle-examples|.
-	" Note: You don't set neobundle setting in .gvimrc!
-	" update vimproc 
-	NeoBundle 'Shougo/vimproc', {
-		\ 'build' : {
-			\ 'windows' : 'make -f make_mingw32.mak',
-			\ 'cygwin' : 'make -f make_cygwin.mak',
-			\ 'mac' : 'make -f make_mac.mak',
-			\ 'unix' : 'make -f make_unix.mak',
-		\ },
-	\ }
-	" molokai
-	NeoBundle 'tomasr/molokai'
-	" rails 
-	NeoBundle 'tpope/vim-rails'
-	" syntastic
-	NeoBundle 'scrooloose/syntastic'
-	" syntax of Arduino 
-	NeoBundle "sudar/vim-arduino-syntax"
-	let g:syntastic_enable_signs=1
-	let g:syntastic_auto_loc_list=2
-	NeoBundle "plasticboy/vim-markdown"
-	NeoBundle "kannokanno/previm"
-	NeoBundle "tyru/open-browser.vim"
-	NeoBundle "Shougo/unite.vim"
-	NeoBundle "Shougo/vimfiler"
-	NeoBundle "koron/codic-vim"
+  " My Bundles here:
+  " Refer to |:NeoBundle-examples|.
+  " Note: You don't set neobundle setting in .gvimrc!
+  " update vimproc 
+  NeoBundle 'Shougo/vimproc', {
+    \ 'build' : {
+      \ 'windows' : 'make -f make_mingw32.mak',
+      \ 'cygwin' : 'make -f make_cygwin.mak',
+      \ 'mac' : 'make -f make_mac.mak',
+      \ 'unix' : 'make -f make_unix.mak',
+    \ },
+  \ }
+  " molokai
+  NeoBundle 'tomasr/molokai'
+  " rails 
+  NeoBundle 'tpope/vim-rails'
+  " syntastic
+  NeoBundle 'scrooloose/syntastic'
+  " syntax of Arduino 
+  NeoBundle "sudar/vim-arduino-syntax"
+  let g:syntastic_enable_signs=1
+  let g:syntastic_auto_loc_list=2
+  NeoBundle "plasticboy/vim-markdown"
+  NeoBundle "kannokanno/previm"
+  NeoBundle "tyru/open-browser.vim"
+  NeoBundle "Shougo/unite.vim"
+  NeoBundle "Shougo/vimfiler"
+  NeoBundle "koron/codic-vim"
 
-	"整形"
-	NeoBundle 'vim-scripts/Align'
+  "整形"
+  NeoBundle 'vim-scripts/Align'
 
-	" メソッド定義元へのジャンプ
-	NeoBundle 'szw/vim-tags'
+  " メソッド定義元へのジャンプ
+  NeoBundle 'szw/vim-tags'
 
-	NeoBundleLazy "majutsushi/tagbar", {
-	      \ "autoload": { "commands": ["TagbarToggle"] }}
-	if ! empty(neobundle#get("tagbar"))
-	   " Width (default 40)
-	  let g:tagbar_width = 20
-	  " Map for toggle
-	  nn <silent> <leader>t :TagbarToggle<CR>
-	endif
+  NeoBundleLazy "majutsushi/tagbar", {
+        \ "autoload": { "commands": ["TagbarToggle"] }}
+  if ! empty(neobundle#get("tagbar"))
+     " Width (default 40)
+    let g:tagbar_width = 20
+    " Map for toggle
+    nn <silent> <leader>t :TagbarToggle<CR>
+  endif
 
-	call neobundle#end()
+  call neobundle#end()
 
-	" Required:
-	filetype plugin indent on
+  " Required:
+  filetype plugin indent on
 
-	" If there are uninstalled bundles found on startup,
-	" this will conveniently prompt you to install them.
-	NeoBundleCheck
+  " If there are uninstalled bundles found on startup,
+  " this will conveniently prompt you to install them.
+  NeoBundleCheck
 endif
 "color scheme
 colorscheme molokai
 "complete is strong
 if has('lua')
-	NeoBundleLazy 'Shougo/neocomplete.vim', {
-				\ 'depends' : 'Shougo/vimproc',
-				\ 'autoload' : { 'insert' : 1,}
-				\ }
+  NeoBundleLazy 'Shougo/neocomplete.vim', {
+        \ 'depends' : 'Shougo/vimproc',
+        \ 'autoload' : { 'insert' : 1,}
+        \ }
 endif
 
 " neocomplete {{{
-let g:neocomplete#enable_at_startup               = 1
-let g:neocomplete#auto_completion_start_length    = 3
+let g:neocomplete#enable_at_startup                  = 1
+let g:neocomplete#auto_completion_start_length      = 3
 let g:neocomplete#enable_ignore_case              = 1
-let g:neocomplete#enable_smart_case               = 1
-let g:neocomplete#enable_camel_case               = 1
-let g:neocomplete#use_vimproc                     = 1
+let g:neocomplete#enable_smart_case                  = 1
+let g:neocomplete#enable_camel_case                  = 1
+let g:neocomplete#use_vimproc                      = 1
 let g:neocomplete#sources#buffer#cache_limit_size = 1000000
 let g:neocomplete#sources#tags#cache_limit_size   = 30000000
-let g:neocomplete#enable_fuzzy_completion         = 1
-let g:neocomplete#lock_buffer_name_pattern        = '\*ku\*'
+let g:neocomplete#enable_fuzzy_completion          = 1
+let g:neocomplete#lock_buffer_name_pattern          = '\*ku\*'
 " }}}
 
 NeoBundleLazy 'alpaca-tc/alpaca_tags', {
-			\ 'depends': ['Shougo/vimproc', 'Shougo/unite.vim'],
-			\ 'autoload' : {
-			\ 'commands' : ['Tags', 'TagsUpdate', 'TagsSet', 'TagsBundle', 'TagsCleanCache'],
-			\ 'unite_sources' : ['tags']
-			\ }}
+      \ 'depends': ['Shougo/vimproc', 'Shougo/unite.vim'],
+      \ 'autoload' : {
+      \ 'commands' : ['Tags', 'TagsUpdate', 'TagsSet', 'TagsBundle', 'TagsCleanCache'],
+      \ 'unite_sources' : ['tags']
+      \ }}
 
 
 "{}close
@@ -141,20 +141,18 @@ syntax on
 "ajustment
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
 "japanese language
 set encoding=utf-8
 "long text is next line
 set wrap
 "show input command
 set showcmd
-"spqce to tab
-set noexpandtab
-retab!
 "use C-a
 cnoremap <C-a> <Home>
 "
-noremap <S-l>   $
-noremap <S-h>   ^
+noremap <S-l>    $
+noremap <S-h>    ^
 
 " CTRL-hjklでウィンドウ移動
 nnoremap <C-j> :<C-w>j
@@ -163,12 +161,14 @@ nnoremap <C-l> :<C-l>j
 nnoremap <C-h> :<C-h>j
 
 
-set showmatch           " 対応する括弧などをハイライト表示する
-set matchtime=3         " 対応括弧のハイライト表示を3秒にする
+set showmatch            " 対応する括弧などをハイライト表示する
+set matchtime=3            " 対応括弧のハイライト表示を3秒にする
 " 入力モード中に素早くjjと入力した場合はESCとみなす
 inoremap jj <Esc>
 " ESCを二回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 
-
-
+" 保存時にtabをスペース(4)に変換する
+autocmd BufWritePre * :%s/\t/     /ge
+" ファイルを開いた際にスペース(4)をtabに変換する
+autocmd BufRead * :retab!
