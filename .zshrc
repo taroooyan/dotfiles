@@ -165,7 +165,11 @@ setopt interactive_comments
 
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
 setopt prompt_subst
-ip=`/sbin/ifconfig en0 |grep "inet\ " | awk '{print $2}'`
+if [ $(uname) = "Darwin" ]; then
+	ip=`/sbin/ifconfig en0 |grep "inet\ " | awk '{print $2}'`
+elif [ $(uname) = "Linux" ]; then
+	ip=`/sbin/ifconfig eth0 |grep "inetアドレス" | awk -F: '{print $2}'|awk -F" " '{print $1}'`
+fi
 PROMPT="[%n@$ip] %{${fg[yellow]}%}%~%{${reset_color}%}
 %{$fg[blue]%}$%{${reset_color}%} "
 
