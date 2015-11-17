@@ -241,3 +241,7 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/Cellar/ctags/5.8_1/bin:$PATH"
 export PATH="/usr/local/Cellar/direnv/2.7.0/bin:$PATH"
 eval "$(rbenv init - zsh)"
+
+source /usr/local/bin/virtualenvwrapper.sh
+export WORKON_HOME=~/.virtualenvs
+export PATH="$HOME/.rbenv/bin:$PATH"

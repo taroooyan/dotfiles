@@ -1,73 +1,84 @@
-"NeoBundle
+"NeoBundl
 if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
-    " Note: Skip initialization for vim-tiny or vim-small.
-    if !1	| finish | endif
-    if has('vim_starting')
-        if &compatible
-            " Be iMproved
-            set nocompatible
-        endif
-        " Required:
-        set runtimepath+=~/.vim/bundle/neobundle.vim/
+  " Note: Skip initialization for vim-tiny or vim-small.
+  if !1	| finish | endif
+  if has('vim_starting')
+    if &compatible
+      " Be iMproved
+      set nocompatible
     endif
-
     " Required:
-    call neobundle#begin(expand('~/.vim/bundle/'))
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+  endif
 
-    " Let NeoBundle manage NeoBundle
-    " Required:
-    NeoBundleFetch 'Shougo/neobundle.vim'
+  " Required:
+  call neobundle#begin(expand('~/.vim/bundle/'))
 
-    " My Bundles here:
-    " Refer to |:NeoBundle-examples|.
-    " Note: You don't set neobundle setting in .gvimrc!
+  " Let NeoBundle manage NeoBundle
+  " Required:
+  NeoBundleFetch 'Shougo/neobundle.vim'
 
-    " update vimproc 
-    NeoBundle 'Shougo/vimproc', {
-                \ 'build' : {
-                \ 'windows' : 'make -f make_mingw32.mak',
-                \ 'cygwin' : 'make -f make_cygwin.mak',
-                \ 'mac' : 'make -f make_mac.mak',
-                \ 'unix' : 'make -f make_unix.mak',
-                \ },
-                \ }
-    " calor scheme molokai
-    NeoBundle 'tomasr/molokai'
-    " rails 
-    NeoBundle 'tpope/vim-rails'
+  " My Bundles here:
+  " Refer to |:NeoBundle-examples|.
+  " Note: You don't set neobundle setting in .gvimrc!
 
-    NeoBundle 'scrooloose/syntastic'
-    NeoBundle "sudar/vim-arduino-syntax"
-    NeoBundle "plasticboy/vim-markdown"
-    NeoBundle "kannokanno/previm"
-    NeoBundle "tyru/open-browser.vim"
-    NeoBundle "Shougo/unite.vim"
-    NeoBundle "Shougo/vimfiler"
-    NeoBundle "koron/codic-vim"
+  " update vimproc 
+  NeoBundle 'Shougo/vimproc', {
+        \ 'build' : {
+        \ 'windows' : 'make -f make_mingw32.mak',
+        \ 'cygwin' : 'make -f make_cygwin.mak',
+        \ 'mac' : 'make -f make_mac.mak',
+        \ 'unix' : 'make -f make_unix.mak',
+        \ },
+        \ }
+  " calor scheme molokai
+  NeoBundle 'tomasr/molokai'
+  " rails 
+  NeoBundle 'tpope/vim-rails'
+  NeoBundle 'vim-ruby/vim-ruby'
+  "    NeoBundle 'todesking/ruby_hl_lvar.vim'
+  NeoBundle 'scrooloose/syntastic'
+  NeoBundle "sudar/vim-arduino-syntax"
+  NeoBundle "plasticboy/vim-markdown"
+  NeoBundle "kannokanno/previm"
+  NeoBundle "tyru/open-browser.vim"
+  NeoBundle "Shougo/unite.vim"
+  NeoBundle "Shougo/vimfiler"
+  NeoBundle "koron/codic-vim"
+  NeoBundle 'mattn/emmet-vim'
+  NeoBundle "vim-scripts/YankRing.vim"
+  NeoBundle "othree/html5.vim"
+  NeoBundle 'mattn/emmet-vim'
+  " コメントON/OFFを手軽に実行
+  NeoBundle 'tomtom/tcomment_vim'
+  " インデントに色を付けて見やすくする
+  NeoBundle 'tpope/vim-pathogen'
+  NeoBundle 'nathanaelkane/vim-indent-guides'
 
-    call neobundle#end()
+  call neobundle#end()
 
-    " Required:
-    filetype plugin indent on
-    " If there are uninstalled bundles found on startup,
-    " this will conveniently prompt you to install them.
-    NeoBundleCheck
+  " Required:
+  filetype plugin indent on
+  " If there are uninstalled bundles found on startup,
+  " this will conveniently prompt you to install them.
+  NeoBundleCheck
 endif
 
 " color scheme is molokai
 colorscheme molokai
 " complete is strong
 if has('lua')
-    NeoBundleLazy 'Shougo/neocomplete.vim', {
-                \ 'depends' : 'Shougo/vimproc',
-                \ 'autoload' : { 'insert' : 1,}
-                \ }
+  NeoBundleLazy 'Shougo/neocomplete.vim', {
+        \ 'depends' : 'Shougo/vimproc',
+        \ 'autoload' : { 'insert' : 1,}
+        \ }
 endif
 " {}close
 set foldmethod=marker foldmarker={,}
 " auto comment out disable
 autocmd FileType * setlocal formatoptions-=ro
 set clipboard+=unnamed
+set clipboard+=autoselect
 " for ubuntu 15.04
 set clipboard=unnamedplus
 " バックスペースキーで行頭を削除する
@@ -136,19 +147,38 @@ let g:neocomplete#enable_fuzzy_completion=1
 let g:neocomplete#lock_buffer_name_pattern='\*ku\*'
 " }}}
 
-set softtabstop=4
-set tabstop=4
+set softtabstop=2
+set tabstop=2
 set autoindent
 set expandtab
-set shiftwidth=4
+set shiftwidth=2
 
 "行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする。
 set smarttab
 "TABをSPACEに変換する
-menu User.Global.Space :set expandtab<CR>:retab<CR>
+"menu User.Global.Space :set expandtab<CR>:retab<CR>
 "ターミナルでマウスを使用できるようにする
 if has ("mouse")
-    set mouse=a
-    set guioptions+=a
-    set ttymouse=xterm2
+  set mouse=a
+  set guioptions+=a
+  set ttymouse=xterm2
 endif
+
+" vim立ち上げたときに、自動的にvim-indent-guidesをオンにする
+let g:indent_guides_enable_on_vim_startup=1
+" ガイドをスタートするインデントの量
+let g:indent_guides_start_level=1
+" 自動カラーを無効にする
+let g:indent_guides_auto_colors=0
+" 奇数インデントのカラー
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=red
+" 偶数インデントのカラー
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=blue
+" ハイライト色の変化の幅
+let g:indent_guides_color_change_percent = 30
+" ガイドの幅
+let g:indent_guides_guide_size = 2
+
+
+
+
