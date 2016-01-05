@@ -1,4 +1,4 @@
-"NeoBundl
+"eNeoBundl
 if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
   " Note: Skip initialization for vim-tiny or vim-small.
   if !1	| finish | endif
@@ -171,14 +171,10 @@ let g:indent_guides_start_level=1
 " 自動カラーを無効にする
 let g:indent_guides_auto_colors=0
 " 奇数インデントのカラー
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=red
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=white
 " 偶数インデントのカラー
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=blue
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=white
 " ハイライト色の変化の幅
 let g:indent_guides_color_change_percent = 30
 " ガイドの幅
-let g:indent_guides_guide_size = 2
-
-
-
-
+let g:indent_guides_guide_size = 1
