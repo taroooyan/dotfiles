@@ -181,13 +181,12 @@ SPROMPT="%{$fg[red]%}%{$suggest%}もしかして %B%r%b %{$fg[red]%}? [y,n,a,e]:
 
 #ls color
 if [ $(uname) = "Darwin" ]; then
-	alias ls='ls -G '
+	alias ls='ls -G'
 elif [ $(uname) = "Linux" ]; then
-	alias ls='ls -F --color=always '
+	alias ls='ls -F --color=always'
 fi
 
 RPROMPT="%1(v|%F{green}%1v%f|)"
-alias ls='ls -F'
 function cd(){
     builtin cd $1 && ls 
 }
