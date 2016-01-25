@@ -1,0 +1,5 @@
+# coding: UTF-8
+#Python2向けのencoding wrapper (『Pythonチュートリアル第2版』p204)
+import codecs
+import sys
+sys.stdout = codecs.getwriter('utf-8')(sys.stdout)

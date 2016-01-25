@@ -1,4 +1,4 @@
-"eNeoBundl
+" NeoBundl
 if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
   " Note: Skip initialization for vim-tiny or vim-small.
   if !1	| finish | endif
@@ -36,8 +36,9 @@ if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
   " rails 
   NeoBundle 'tpope/vim-rails'
   NeoBundle 'vim-ruby/vim-ruby'
-  "    NeoBundle 'todesking/ruby_hl_lvar.vim'
+
   NeoBundle 'scrooloose/syntastic'
+
   NeoBundle "sudar/vim-arduino-syntax"
   NeoBundle "plasticboy/vim-markdown"
   NeoBundle "kannokanno/previm"
@@ -178,3 +179,13 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=white
 let g:indent_guides_color_change_percent = 30
 " ガイドの幅
 let g:indent_guides_guide_size = 1
+
+"" python環境
+" coding規約(pep8)
+let g:syntastic_python_checkers = ['pyflakes', 'pep8']
+" template
+autocmd BufNewFile *.py 0r $HOME/.vim/template/python.txt
+
+"" ruby環境
+" template
+autocmd BufNewFile *.rb 0r $HOME/.vim/template/ruby.txt
