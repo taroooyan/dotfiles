@@ -190,24 +190,11 @@ RPROMPT="%1(v|%F{green}%1v%f|)"
 function cd(){
     builtin cd $1 && ls 
 }
-gcca(){
-    if [ -e a.out ] ; then 
-        rm a.out
-    fi
-    gcc $1
-    if [ -e a.out ] ; then
-        echo -e "\e[33msuccess\e[m" ## color change  
-        ./a.out
-    fi
-}
 texpdf(){
     platex $1
     dvips -o $1
     dvipdfmx $1    
     evince $1.pdf
-}
-mkdto(){
-	mkdir `date '+%Y%m%d'`
 }
 #fgコマンドを<C-z>で行う
 fancy-ctrl-z () {
