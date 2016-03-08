@@ -67,6 +67,7 @@ endif
 
 " color scheme is molokai
 colorscheme molokai
+set t_Co=256
 " complete is strong
 if has('lua')
   NeoBundleLazy 'Shougo/neocomplete.vim', {
@@ -189,3 +190,4 @@ autocmd BufNewFile *.py 0r $HOME/.vim/template/python.txt
 "" ruby環境
 " template
 autocmd BufNewFile *.rb 0r $HOME/.vim/template/ruby.txt
+
