@@ -191,3 +191,7 @@ autocmd BufNewFile *.py 0r $HOME/.vim/template/python.txt
 " template
 autocmd BufNewFile *.rb 0r $HOME/.vim/template/ruby.txt
 
+"" C++
+" template
+autocmd BufNewFile *.cpp 0r $HOME/.vim/template/c++.txt
+
