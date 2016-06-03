@@ -61,6 +61,9 @@ if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
   NeoBundle 'Shougo/neosnippet'
   NeoBundle 'Shougo/neosnippet-snippets'
 
+  " Install clang_complete
+  NeoBundle 'Rip-Rip/clang_complete'
+
   call neobundle#end()
 
   " Required:
@@ -98,8 +101,6 @@ inoremap {} {}<Left>
 inoremap () ()<Left>
 inoremap [] []<Left>
 inoremap "" ""<Left>
-" template config
-autocmd BufNewFile *.c 0r $HOME/.vim/template/c.txt
 " input date
 nmap <C-d> <ESC>i<C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><CR>
 " special-character is visualization
@@ -164,12 +165,6 @@ set shiftwidth=2
 set smarttab
 "TABをSPACEに変換する
 "menu User.Global.Space :set expandtab<CR>:retab<CR>
-"ターミナルでマウスを使用できるようにする
-if has ("mouse")
-  set mouse=a
-  set guioptions+=a
-  set ttymouse=xterm2
-endif
 
 " vim立ち上げたときに、自動的にvim-indent-guidesをオンにする
 let g:indent_guides_enable_on_vim_startup=1
@@ -191,11 +186,19 @@ let g:indent_guides_guide_size = 1
 let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 " template
 autocmd BufNewFile *.py 0r $HOME/.vim/template/python.txt
+autocmd BufRead,BufNewFile *.cpp set tabstop=4 shiftwidth=4 shiftwidth=4
 
 "" ruby環境
 " template
 autocmd BufNewFile *.rb 0r $HOME/.vim/template/ruby.txt
+autocmd BufRead,BufNewFile *.cpp set tabstop=2 shiftwidth=2 shiftwidth=2
 
 "" C++
 " template
 autocmd BufNewFile *.cpp 0r $HOME/.vim/template/c++.txt
+autocmd BufRead,BufNewFile *.cpp set tabstop=4 shiftwidth=4 shiftwidth=4
+" clang_complete
+let g:clang_periodic_quickfix = 1
+let g:clang_complete_copen = 1
+let g:clang_use_library = 1
+
