@@ -104,7 +104,7 @@ autocmd BufNewFile *.c 0r $HOME/.vim/template/c.txt
 nmap <C-d> <ESC>i<C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><CR>
 " special-character is visualization
 set list
-set listchars=tab:»-,eol:$,trail:-,extends:»,precedes:«,nbsp:%
+" set listchars=tab:»-,eol:$,trail:-,extends:»,precedes:«,nbsp:%
 " write under line
 set cursorline
 " show something in statusline
@@ -199,7 +199,3 @@ autocmd BufNewFile *.rb 0r $HOME/.vim/template/ruby.txt
 "" C++
 " template
 autocmd BufNewFile *.cpp 0r $HOME/.vim/template/c++.txt
-
-" Plugin key-mappings.  " <C-k>でsnippetの展開
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
