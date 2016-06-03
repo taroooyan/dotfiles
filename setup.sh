@@ -7,3 +7,9 @@ ln -s ~/dotfiles/.git_template ~/.git_template
 
 git config --global init.templatedir '~/.git_template'
 
+## font
+cd /tmp
+git clone https://github.com/yascentur/RictyDiminished.git
+mkdir ~/.fonts
+cd RictyDiminished/
+cp *.ttf ~/.fonts

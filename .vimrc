@@ -50,11 +50,16 @@ if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
   NeoBundle "vim-scripts/YankRing.vim"
   NeoBundle "othree/html5.vim"
   NeoBundle 'mattn/emmet-vim'
+
   " コメントON/OFFを手軽に実行
   NeoBundle 'tomtom/tcomment_vim'
   " インデントに色を付けて見やすくする
   NeoBundle 'tpope/vim-pathogen'
   NeoBundle 'nathanaelkane/vim-indent-guides'
+  " スニペット機能を追加
+  NeoBundle 'Shougo/neocomplete'
+  NeoBundle 'Shougo/neosnippet'
+  NeoBundle 'Shougo/neosnippet-snippets'
 
   call neobundle#end()
 
@@ -195,3 +200,6 @@ autocmd BufNewFile *.rb 0r $HOME/.vim/template/ruby.txt
 " template
 autocmd BufNewFile *.cpp 0r $HOME/.vim/template/c++.txt
 
+" Plugin key-mappings.  " <C-k>でsnippetの展開
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
