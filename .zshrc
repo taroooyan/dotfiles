@@ -186,6 +186,9 @@ elif [ $(uname) = "Linux" ]; then
 	alias ls='ls -F --color=always'
 fi
 
+# oepn command
+alias open=xdg-open
+
 RPROMPT="%1(v|%F{green}%1v%f|)"
 function cd(){
     builtin cd $1 && ls 
