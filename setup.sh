@@ -13,3 +13,7 @@ git clone https://github.com/yascentur/RictyDiminished.git
 mkdir ~/.fonts
 cd RictyDiminished/
 cp *.ttf ~/.fonts
+
+## NeoBundle
+mkdir -p ~/.vim/bundle
+git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
