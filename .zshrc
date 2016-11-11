@@ -177,7 +177,7 @@ PROMPT="[%n@$ip] %{${fg[yellow]}%}%~%{${reset_color}%}
 PROMPT2='[%n]> '
 
 # もしかして時のプロンプト指定
-SPROMPT="%{$fg[red]%}%{$suggest%}もしかして %B%r%b %{$fg[red]%}? [y,n,a,e]:${reset_color} "
+SPROMPT="%{$fg[red]%}%{$suggest%}Perhaps %B%r%b %{$fg[red]%}? [y,n,a,e]:${reset_color} "
 
 #ls color
 if [ $(uname) = "Darwin" ]; then
@@ -196,7 +196,7 @@ function cd(){
 texpdf(){
     platex $1
     dvips -o $1
-    dvipdfmx $1    
+    dvipdfmx $1
     evince $1.pdf
 }
 #fgコマンドを<C-z>で行う

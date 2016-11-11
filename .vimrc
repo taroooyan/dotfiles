@@ -101,8 +101,6 @@ inoremap {} {}<Left>
 inoremap () ()<Left>
 inoremap [] []<Left>
 inoremap "" ""<Left>
-" input date
-nmap <C-d> <ESC>i<C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><CR>
 " special-character is visualization
 set list
 " set listchars=tab:»-,eol:$,trail:-,extends:»,precedes:«,nbsp:%
