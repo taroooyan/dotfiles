@@ -101,8 +101,6 @@ inoremap {} {}<Left>
 inoremap () ()<Left>
 inoremap [] []<Left>
 inoremap "" ""<Left>
-" input date
-nmap <C-d> <ESC>i<C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><CR>
 " special-character is visualization
 set list
 " set listchars=tab:»-,eol:$,trail:-,extends:»,precedes:«,nbsp:%
@@ -123,6 +121,8 @@ set wrap
 set showcmd
 " use C-a
 cnoremap <C-a> <Home>
+" background is same system setting
+highlight Normal ctermbg=none
 " 行頭と行末の移動をC-l,C-hでする
 noremap <S-l> $
 noremap <S-h> ^
@@ -139,6 +139,8 @@ set matchtime=3
 inoremap jj <Esc>
 " ESCを二回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
+" change comment out color
+hi Comment ctermfg=blue
 " syntax of arduino
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
