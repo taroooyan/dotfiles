@@ -5,8 +5,6 @@ ln -s ~/dotfiles/.vim ~/.vim
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/.git_template ~/.git_template
 
-git config --global init.templatedir '~/.git_template'
-
 ## font
 cd /tmp
 git clone https://github.com/yascentur/RictyDiminished.git
