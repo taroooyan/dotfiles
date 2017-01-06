@@ -4,6 +4,7 @@ ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.vim ~/.vim
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/.git_template ~/.git_template
+ln -s ~/dotfiles/.gitconfig  ~/.gitconfig
 
 ## font
 cd /tmp
@@ -14,4 +15,4 @@ cp *.ttf ~/.fonts
 
 ## NeoBundle
 mkdir -p ~/.vim/bundle
-git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
