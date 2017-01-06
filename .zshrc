@@ -97,7 +97,7 @@ setopt share_history
 # スペースから始まるコマンド行はヒストリに残さない
 setopt hist_ignore_space
 
- # ヒストリに保存するときに余分なスペースを削除する
+# ヒストリに保存するときに余分なスペースを削除する
 setopt hist_reduce_blanks
 
 
@@ -166,9 +166,9 @@ setopt interactive_comments
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
 setopt prompt_subst
 if [ $(uname) = "Darwin" ]; then
-	ip=`/sbin/ifconfig en0 |grep "inet\ " | awk '{print $2}'`
+  ip=`/sbin/ifconfig en0 |grep "inet\ " | awk '{print $2}'`
 elif [ $(uname) = "Linux" ]; then
-	ip=`/sbin/ifconfig eth0 |grep "inetアドレス" | awk -F: '{print $2}'|awk -F" " '{print $1}'`
+  ip=`/sbin/ifconfig eth0 |grep "inetアドレス" | awk -F: '{print $2}'|awk -F" " '{print $1}'`
 fi
 PROMPT="[%n@$ip] %{${fg[yellow]}%}%~%{${reset_color}%}
 %{$fg[blue]%}$%{${reset_color}%} "
@@ -181,24 +181,23 @@ SPROMPT="%{$fg[red]%}%{$suggest%}Perhaps %B%r%b %{$fg[red]%}? [y,n,a,e]:${reset_
 
 #ls color
 if [ $(uname) = "Darwin" ]; then
-	alias ls='ls -G'
+  alias ls='ls -G'
 elif [ $(uname) = "Linux" ]; then
-	alias ls='ls -F --color=always'
+  alias ls='ls -F --color=always'
 fi
 
+RPROMPT="%1(v|%F{green}%1v%f|)"
+
+
+###alias
 # oepn command
 alias open=xdg-open
 
-RPROMPT="%1(v|%F{green}%1v%f|)"
+# ls after cd
 function cd(){
-    builtin cd $1 && ls 
+  builtin cd $1 && ls 
 }
-texpdf(){
-    platex $1
-    dvips -o $1
-    dvipdfmx $1
-    evince $1.pdf
-}
+
 #fgコマンドを<C-z>で行う
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
@@ -212,10 +211,9 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
-###alias
 #pbcopy for linux
 if [ $(uname) = "Linux" ] ; then
-	alias pbcopy='xsel --clipboard --input'
+  alias pbcopy='xsel --clipboard --input'
 fi
 
 #peco link 'ghq list -p'
