@@ -18,10 +18,6 @@ if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
   " Required:
   NeoBundleFetch 'Shougo/neobundle.vim'
 
-  " My Bundles here:
-  " Refer to |:NeoBundle-examples|.
-  " Note: You don't set neobundle setting in .gvimrc!
-
   " update vimproc 
   NeoBundle 'Shougo/vimproc', {
         \ 'build' : {
@@ -31,38 +27,34 @@ if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
         \ 'unix' : 'make -f make_unix.mak',
         \ },
         \ }
-  " calor scheme molokai
+
+  " color scheme molokai
   NeoBundle 'tomasr/molokai'
-  " rails 
+
+  " Rails 
   NeoBundle 'tpope/vim-rails'
   NeoBundle 'vim-ruby/vim-ruby'
 
-  NeoBundle 'scrooloose/syntastic'
-
+  " Arduino
   NeoBundle "sudar/vim-arduino-syntax"
+
+  " Markdown
   NeoBundle "plasticboy/vim-markdown"
-  NeoBundle "kannokanno/previm"
-  NeoBundle "tyru/open-browser.vim"
-  NeoBundle "Shougo/unite.vim"
-  NeoBundle "Shougo/vimfiler"
-  NeoBundle "koron/codic-vim"
-  NeoBundle 'mattn/emmet-vim'
-  NeoBundle "vim-scripts/YankRing.vim"
+
+  " HTML/CSS
   NeoBundle "othree/html5.vim"
   NeoBundle 'mattn/emmet-vim'
 
+  " Go
+  NeoBundle 'fatih/vim-go'
+
   " コメントON/OFFを手軽に実行
   NeoBundle 'tomtom/tcomment_vim'
-  " インデントに色を付けて見やすくする
-  NeoBundle 'tpope/vim-pathogen'
-  NeoBundle 'nathanaelkane/vim-indent-guides'
+
   " スニペット機能を追加
   NeoBundle 'Shougo/neocomplete'
   NeoBundle 'Shougo/neosnippet'
   NeoBundle 'Shougo/neosnippet-snippets'
-
-  " Install clang_complete
-  NeoBundle 'Rip-Rip/clang_complete'
 
   call neobundle#end()
 
@@ -76,6 +68,7 @@ endif
 " color scheme is molokai
 colorscheme molokai
 set t_Co=256
+
 " complete is strong
 if has('lua')
   NeoBundleLazy 'Shougo/neocomplete.vim', {
@@ -83,67 +76,89 @@ if has('lua')
         \ 'autoload' : { 'insert' : 1,}
         \ }
 endif
-" {}close
-set foldmethod=marker foldmarker={,}
+
 " auto comment out disable
 autocmd FileType * setlocal formatoptions-=ro
 set clipboard+=unnamed
 set clipboard+=autoselect
+
 " for ubuntu 15.04
 set clipboard=unnamedplus
+
 " バックスペースキーで行頭を削除する
 set backspace=indent,eol,start
+
 " delete key of mac is enable
 noremap  
 noremap!  
+
 " {}() outo into
 inoremap {} {}<Left>
 inoremap () ()<Left>
 inoremap [] []<Left>
 inoremap "" ""<Left>
+
 " special-character is visualization
 set list
-" set listchars=tab:»-,eol:$,trail:-,extends:»,precedes:«,nbsp:%
+set listchars=tab:»-,eol:$,trail:-,extends:»,precedes:«,nbsp:%
+
 " write under line
 set cursorline
+
 " show something in statusline
 set laststatus=2
 set statusline=%F%m%r%h%w%=\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [LEN=%L]\ [%p%%]
+
 " show line number
 set number
+
 " syntax
 syntax on
-" japanese language
+
+" encoding
 set encoding=utf-8
+
 " long text is next line
 set wrap
+
 " show input command
 set showcmd
+
 " use C-a
 cnoremap <C-a> <Home>
+
 " background is same system setting
 highlight Normal ctermbg=none
+
 " 行頭と行末の移動をC-l,C-hでする
 noremap <S-l> $
 noremap <S-h> ^
+
 " CTRL-hjklでウィンドウ移動
 nnoremap <C-j> :<C-w>j
 nnoremap <C-k> :<C-k>j
 nnoremap <C-l> :<C-l>j
 nnoremap <C-h> :<C-h>j
+
 " 対応する括弧などをハイライト表示する
 set showmatch
+
 " 対応括弧のハイライト表示を3秒にする
 set matchtime=3
+
 " 入力モード中に素早くjjと入力した場合はESCとみなす
 inoremap jj <Esc>
+
 " ESCを二回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
+
 " change comment out color
 hi Comment ctermfg=blue
+
 " syntax of arduino
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
+
 " neocomplete {{{
 let g:neocomplete#enable_at_startup=1
 let g:neocomplete#auto_completion_start_length=3
@@ -165,35 +180,23 @@ set shiftwidth=2
 
 "行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする。
 set smarttab
+
 "TABをSPACEに変換する
-"menu User.Global.Space :set expandtab<CR>:retab<CR>
+menu User.Global.Space :set expandtab<CR>:retab<CR>
 
-" vim立ち上げたときに、自動的にvim-indent-guidesをオンにする
-let g:indent_guides_enable_on_vim_startup=1
-" ガイドをスタートするインデントの量
-let g:indent_guides_start_level=1
-" 自動カラーを無効にする
-let g:indent_guides_auto_colors=0
-" 奇数インデントのカラー
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=white
-" 偶数インデントのカラー
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=white
-" ハイライト色の変化の幅
-let g:indent_guides_color_change_percent = 30
-" ガイドの幅
-let g:indent_guides_guide_size = 1
 
-"" python環境
+""" 言語設定
+"" Python環境
 " coding規約(pep8)
 let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 " template
 autocmd BufNewFile *.py 0r $HOME/.vim/template/python.txt
-autocmd BufRead,BufNewFile *.cpp set tabstop=4 shiftwidth=4 shiftwidth=4
+autocmd BufRead,BufNewFile *.py set tabstop=4 shiftwidth=4 shiftwidth=4
 
-"" ruby環境
+"" Ruby環境
 " template
 autocmd BufNewFile *.rb 0r $HOME/.vim/template/ruby.txt
-autocmd BufRead,BufNewFile *.cpp set tabstop=2 shiftwidth=2 shiftwidth=2
+autocmd BufRead,BufNewFile *.rb set tabstop=2 shiftwidth=2 shiftwidth=2
 
 "" C++
 " template

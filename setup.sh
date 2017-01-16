@@ -7,13 +7,6 @@ ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/.git_template ~/.git_template
 ln -s ~/dotfiles/.gitconfig  ~/.gitconfig
 
-## font
-cd /tmp
-git clone https://github.com/yascentur/RictyDiminished.git
-mkdir ~/.fonts
-cd RictyDiminished/
-cp *.ttf ~/.fonts
-
 ## NeoBundle
 mkdir -p ~/.vim/bundle
 git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
